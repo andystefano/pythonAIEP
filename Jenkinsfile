@@ -23,15 +23,26 @@ pipeline {
             }
         }
 
-        stage('Ejecutar app') {
+        stage('Validar app') {
             steps {
                 sh '''
                     if [ -f .venv/bin/activate ]; then
-                        . .venv/bin/activate
-                        python index.py
+                        PYTHON_BIN=".venv/bin/python"
                     else
-                        python3 index.py
+                        PYTHON_BIN="python3"
                     fi
+
+                    $PYTHON_BIN -m py_compile index.py
+
+                    $PYTHON_BIN - <<'PY'
+from index import app
+
+client = app.test_client()
+response = client.get("/")
+
+assert response.status_code == 200, f"status inesperado: {response.status_code}"
+print("Smoke test OK: GET / -> 200")
+PY
                 '''
             }
         }
