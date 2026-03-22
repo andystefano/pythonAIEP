@@ -43,6 +43,21 @@ response = client.get("/")
 assert response.status_code == 200, f"status inesperado: {response.status_code}"
 print("Smoke test OK: GET / -> 200")
 PY
+
+                    $PYTHON_BIN index.py > app.log 2>&1 &
+                    APP_PID=$!
+                    trap "kill $APP_PID" EXIT
+                    sleep 3
+
+                    $PYTHON_BIN - <<'PY'
+import urllib.request
+
+with urllib.request.urlopen("http://127.0.0.1:8000/", timeout=10) as r:
+    status = r.getcode()
+
+assert status == 200, f"status inesperado al levantar servidor real: {status}"
+print("Startup test OK: servidor real responde 200")
+PY
                 '''
             }
         }
