@@ -31,7 +31,7 @@ def home():
       </head>
       <body style="font-family: Arial, sans-serif; margin: 40px;">
         <h1>Archivo principal (index.py)</h1>
-        <p>Selecciona una ruta para abrir su archivo finallo:</p>
+        <p>Selecciona una ruta para abrir su archivo finallu:</p>
         <ul>
           {links}
         </ul>
