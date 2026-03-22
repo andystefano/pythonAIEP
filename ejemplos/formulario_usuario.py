@@ -1,6 +1,9 @@
 from flask import Flask
 
-from guardar_usuario import registrar_rutas as registrar_ruta_guardado
+try:
+    from ejemplos.guardar_usuario import registrar_rutas as registrar_ruta_guardado
+except ModuleNotFoundError:
+    from guardar_usuario import registrar_rutas as registrar_ruta_guardado
 
 app = Flask(__name__)
 

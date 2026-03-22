@@ -1,4 +1,7 @@
-from db import get_db_connection
+try:
+    from ejemplos.db import get_db_connection
+except ModuleNotFoundError:
+    from db import get_db_connection
 
 
 def contar_usuarios():

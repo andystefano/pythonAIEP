@@ -1,6 +1,9 @@
 from flask import request
 
-from db import get_db_connection
+try:
+    from ejemplos.db import get_db_connection
+except ModuleNotFoundError:
+    from db import get_db_connection
 
 
 def registrar_rutas(app):

@@ -23,6 +23,7 @@ def home():
         f'<li><a href="/{module_name}">{module_name}.py</a></li>'
         for module_name in MODULE_NAMES
     )
+    links += '<li><a href="/contar-usuarios">contar-usuarios (MySQL)</a></li>'
     return f"""
     <html>
       <head>
@@ -35,6 +36,25 @@ def home():
         <ul>
           {links}
         </ul>
+      </body>
+    </html>
+    """
+
+
+@app.get("/contar-usuarios")
+def contar_usuarios_url():
+    from ejemplos.contar_usuarios import contar_usuarios
+
+    total = contar_usuarios()
+    return f"""
+    <html>
+      <head>
+        <meta charset="utf-8" />
+        <title>Conteo de usuarios</title>
+      </head>
+      <body style="font-family: Arial, sans-serif; margin: 40px;">
+        <h1>Total de usuarios: {total}</h1>
+        <a href="/">Volver al index</a>
       </body>
     </html>
     """
