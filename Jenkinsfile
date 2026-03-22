@@ -10,13 +10,21 @@ pipeline {
 
         stage('Instalar dependencias') {
             steps {
-                sh 'pip3 install -r requirements.txt'
+                sh '''
+                    python3 -m venv .venv
+                    . .venv/bin/activate
+                    python -m pip install --upgrade pip
+                    pip install -r requirements.txt
+                '''
             }
         }
 
         stage('Ejecutar app') {
             steps {
-                sh 'python3 index.py'
+                sh '''
+                    . .venv/bin/activate
+                    python index.py
+                '''
             }
         }
     }
