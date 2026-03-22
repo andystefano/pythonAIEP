@@ -2,3 +2,7 @@
 #Para inciiar ejecutar lo siguiente
 
 pip install flask
+
+
+
+#la ruta para ver es http://pythonaiep.andy.cl/
