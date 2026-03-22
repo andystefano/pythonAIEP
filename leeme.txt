@@ -1,0 +1,4 @@
+
+#Para inciiar ejecutar lo siguiente
+
+pip install flask
