@@ -61,5 +61,36 @@ PY
                 '''
             }
         }
+
+        stage('Desplegar app') {
+            steps {
+                sh '''
+                    if [ -f .venv/bin/activate ]; then
+                        PYTHON_BIN=".venv/bin/python"
+                    else
+                        PYTHON_BIN="python3"
+                    fi
+
+                    if [ -f app.pid ] && kill -0 "$(cat app.pid)" 2>/dev/null; then
+                        kill "$(cat app.pid)" || true
+                        sleep 1
+                    fi
+
+                    JENKINS_NODE_COOKIE=dontKillMe BUILD_ID=dontKillMe nohup $PYTHON_BIN index.py > app.log 2>&1 &
+                    echo $! > app.pid
+                    sleep 3
+
+                    $PYTHON_BIN - <<'PY'
+import urllib.request
+
+with urllib.request.urlopen("http://127.0.0.1:8000/", timeout=10) as r:
+    status = r.getcode()
+
+assert status == 200, f"deploy fallido, status: {status}"
+print("Deploy OK: app corriendo en puerto 8000")
+PY
+                '''
+            }
+        }
     }
 }
