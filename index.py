@@ -26,6 +26,7 @@ def home():
         for module_name in MODULE_NAMES
     )
     links += '<li><a href="/contar-usuarios">contar-usuarios (MySQL)</a></li>'
+    links += '<li><a href="/listar-usuarios">listar-usuarios (MySQL)</a></li>'
     links += '<li><a href="/formulario-usuario">formulario-usuario (MySQL)</a></li>'
     return f"""
     <html>
@@ -57,6 +58,58 @@ def contar_usuarios_url():
       </head>
       <body style="font-family: Arial, sans-serif; margin: 40px;">
         <h1>Total de usuarios: {total}</h1>
+        <a href="/">Volver al index</a>
+      </body>
+    </html>
+    """
+
+
+@app.get("/listar-usuarios")
+def listar_usuarios_url():
+    from ejemplos.listar_usuarios import listar_usuarios
+
+    usuarios = listar_usuarios()
+    filas = "".join(
+        (
+            "<tr>"
+            f"<td>{usuario['id']}</td>"
+            f"<td>{usuario['email']}</td>"
+            f"<td>{usuario['nombre']}</td>"
+            f"<td>{usuario['password']}</td>"
+            "</tr>"
+        )
+        for usuario in usuarios
+    )
+
+    if not filas:
+        filas = (
+            '<tr><td colspan="4" style="text-align:center;">'
+            "No hay usuarios registrados."
+            "</td></tr>"
+        )
+
+    return f"""
+    <html>
+      <head>
+        <meta charset="utf-8" />
+        <title>Listado de usuarios</title>
+      </head>
+      <body style="font-family: Arial, sans-serif; margin: 40px;">
+        <h1>Listado de usuarios</h1>
+        <table border="1" cellpadding="8" cellspacing="0">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Email</th>
+              <th>Nombre</th>
+              <th>Password</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filas}
+          </tbody>
+        </table>
+        <br />
         <a href="/">Volver al index</a>
       </body>
     </html>
