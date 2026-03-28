@@ -1,25 +1,4 @@
-import os
-import requests
 from flask import request, jsonify
-
-mak = os.getenv("mak", "")
-MAILGUN_DOMAIN = "sandbox63cc9589838a4c69918c906ea969ece5.mailgun.org"
-
-
-def enviar_email(destinatario, number):
-    return requests.post(
-        f"https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages",
-        auth=("api", mak),
-        data={
-            "from": f"Liquidaciones <postmaster@{MAILGUN_DOMAIN}>",
-            "to": destinatario,
-            "subject": "Solicitud de liquidaciones de sueldo",
-            "text": (
-                f"Se han solicitado {number} liquidaciones de sueldo. "
-                "Serán enviadas a la brevedad."
-            ),
-        },
-    )
 
 
 def registrar_rutas(app):
@@ -37,8 +16,6 @@ def registrar_rutas(app):
             params = data.get("queryResult", {}).get("parameters", {})
             number = params.get("number", 0)
             email = params.get("email", "")
-
-            enviar_email(email, number)
 
             return jsonify({
                 "fulfillmentText": (
