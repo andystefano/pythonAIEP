@@ -5,6 +5,7 @@ from flask import Flask, request
 
 from ejemplos.db import get_db_connection
 from ejemplos.guardar_usuario import registrar_rutas as registrar_rutas_guardar_usuario
+from webhook import registrar_rutas as registrar_rutas_webhook
 
 app = Flask(__name__)
 
@@ -320,6 +321,7 @@ for module_name in MODULE_NAMES:
     )
 
 registrar_rutas_guardar_usuario(app)
+registrar_rutas_webhook(app)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000)
