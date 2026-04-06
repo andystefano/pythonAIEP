@@ -8,6 +8,34 @@ pipeline {
             }
         }
 
+        stage('Crear .env') {
+            steps {
+                withCredentials([
+                    string(credentialsId: 'server',         variable: 'server'),
+                    string(credentialsId: 'port',           variable: 'port'),
+                    string(credentialsId: 'database',       variable: 'database'),
+                    string(credentialsId: 'user',           variable: 'user'),
+                    string(credentialsId: 'password',       variable: 'password'),
+                    string(credentialsId: 'openai',         variable: 'openai'),
+                    string(credentialsId: 'mailgun_secret', variable: 'mailgun_secret'),
+                    string(credentialsId: 'mailgun_url',    variable: 'mailgun_url'),
+                ]) {
+                    sh '''
+                        cat > .env <<EOF
+server=${server}
+port=${port}
+database=${database}
+user=${user}
+password=${password}
+openai=${openai}
+mailgun_secret=${mailgun_secret}
+mailgun_url=${mailgun_url}
+EOF
+                    '''
+                }
+            }
+        }
+
         stage('Instalar dependencias') {
             steps {
                 sh '''
