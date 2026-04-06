@@ -14,7 +14,7 @@ pipeline {
                     string(credentialsId: 'server',         variable: 'server'),
                     string(credentialsId: 'port',           variable: 'port'),
                     string(credentialsId: 'database',       variable: 'database'),
-                    string(credentialsId: 'user',           variable: 'userBD'),
+                    string(credentialsId: 'userBD',           variable: 'userBD'),
                     string(credentialsId: 'password',       variable: 'password'),
                     string(credentialsId: 'openai',         variable: 'openai'),
                     string(credentialsId: 'mailgun_secret', variable: 'mailgun_secret'),
@@ -25,7 +25,7 @@ pipeline {
 server=${server}
 port=${port}
 database=${database}
-user=${user}
+user=${userBD}
 password=${password}
 openai=${openai}
 mailgun_secret=${mailgun_secret}
