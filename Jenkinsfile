@@ -8,7 +8,7 @@ pipeline {
             }
         }
 
-        stage('Crear .env') {
+        stage('Crear archivo .env') {
             steps {
                 withCredentials([
                     string(credentialsId: 'server',         variable: 'server'),
