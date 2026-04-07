@@ -1,6 +1,36 @@
-from flask import request, jsonify
+import os
 
-from ejemplos.db import get_db_connection
+from flask import request, jsonify
+from openai import OpenAI
+
+from ejemplos.db import get_db_connection, get_env_config
+
+
+def _openai_api_key():
+    return (os.environ.get("openai") or get_env_config().get("openai") or "").strip()
+
+
+def _significado_del_nombre(nombre):
+    api_key = _openai_api_key()
+    if not api_key:
+        raise ValueError("Falta la clave de API OpenAI (variable openai).")
+
+    client = OpenAI(api_key=api_key)
+    completion = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {
+                "role": "user",
+                "content": (
+                    f"Explica de forma breve y clara en español cuál es el significado "
+                    f"y el origen (etimología o cultura) del nombre propio: «{nombre}». "
+                    "Si es ambiguo, menciona las variantes más comunes."
+                ),
+            }
+        ],
+        max_tokens=500,
+    )
+    return (completion.choices[0].message.content or "").strip()
 
 
 def _guardar_concursante(nombre, apellido, email, telefono):
@@ -62,6 +92,25 @@ def registrar_rutas(app):
             except Exception as e:
                 return jsonify({
                     "fulfillmentText": f"Error al registrar el concursante: {str(e)}"
+                })
+
+        if intent == "significadoNombre":
+            params = data.get("queryResult", {}).get("parameters", {})
+            nombre = (params.get("nombre") or "").strip()
+
+            if not nombre:
+                return jsonify({
+                    "fulfillmentText": "Indica un nombre para consultar su significado y origen."
+                })
+
+            try:
+                texto = _significado_del_nombre(nombre)
+                return jsonify({"fulfillmentText": texto})
+            except ValueError as e:
+                return jsonify({"fulfillmentText": str(e)})
+            except Exception as e:
+                return jsonify({
+                    "fulfillmentText": f"No pude consultar el significado del nombre: {str(e)}"
                 })
 
         return jsonify({

@@ -17,6 +17,10 @@ def _cargar_env():
     return config
 
 
+def get_env_config():
+    return _cargar_env()
+
+
 def get_db_connection():
     config = _cargar_env()
     return mysql.connector.connect(
