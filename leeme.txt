@@ -1,5 +1,5 @@
-
-#Para inciiar ejecutar lo siguiente
+#11/04/2026 1932
+#Para iniciar ejecutar lo siguiente
 
 pip install flask
 
