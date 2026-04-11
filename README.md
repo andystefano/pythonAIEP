@@ -258,3 +258,6 @@ for usuario in usuarios:
 4. Valida datos con `if` antes de procesar.
 5. Comenta solo lo necesario y manten el codigo simple.
 
+
+Si es posible usa framework en vez de codigo puro
+
