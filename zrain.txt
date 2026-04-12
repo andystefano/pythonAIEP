@@ -1,3 +1,7 @@
 sebastian Eduardo rain leniz
 pruebas 54 mil
 avanzando con git branch
+se comienza con git add .(para subir)
+git commit -m "nombre del archivo"
+git push
+git pull
