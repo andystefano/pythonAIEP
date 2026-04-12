@@ -5,3 +5,4 @@ se comienza con git add .(para subir)
 git commit -m "nombre del archivo"
 git push
 git pull
+terminado de subir
