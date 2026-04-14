@@ -1,6 +1,6 @@
 nombre = "Andy"
-numero1 = 6
-numero2 = 7
+numero1 = 5
+numero2 = 3
 resultado = numero1 * numero2
 notas = [5.5, 4.0, 6.2, 3.8, 4.7]
 promedio = sum(notas) / len(notas)
