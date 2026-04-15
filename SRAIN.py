@@ -3,7 +3,7 @@ def render_page():
     peso = 70          # Peso en kg
     imc = peso / (altura ** 2)  # Calcula el indice de masa corporal
 
-    return """
+    return f"""
     <html>
       <head>
         <meta charset="utf-8" />
