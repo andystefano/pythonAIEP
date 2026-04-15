@@ -1,12 +1,11 @@
-def render_page():
-
 altura = 1.73
 peso = 95
 
 imc = peso / (altura * altura)
 
+def render_page():
 
-    return """
+    return f"""
     <html>
       <head>
         <meta charset="utf-8" />
