@@ -7,7 +7,7 @@ def render_page():
     <html>
       <head>
         <meta charset="utf-8" />
-        <title>ZRAIN.py</title>
+        <title>SRAIN.py</title>
         <p>> IMC: {imc}</p>
 
       </head>
