@@ -8,7 +8,7 @@ def render_page():
       <head>
         <meta charset="utf-8" />
         <title>SRAIN.py</title>
-        <p>> IMC: {imc}</p>
+        <p>> IMC: {imc:.2f}</p>
 
       </head>
       <body style="font-family: Arial, sans-serif; margin: 70px;">
