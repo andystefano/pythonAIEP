@@ -10,3 +10,9 @@ terminado de subir
 git chekout --- ir a la historia seleccionada
 git log --- revisar hisotrial de la rama
 git branch --- para crear rama 
+
+git fech --- descarga varias ramas
+
+git checkout  "rama" --- selecciona la rama
+git merge -- para unir las rama
+git dif 
