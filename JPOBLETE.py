@@ -1,4 +1,11 @@
 def render_page():
+
+altura = 1.73
+peso = 95
+
+imc = peso / (altura * altura)
+
+
     return """
     <html>
       <head>
@@ -7,6 +14,7 @@ def render_page():
       </head>
       <body style="font-family: Arial, sans-serif; margin: 40px;">
         <h1>Archivo JPOBLETE.py</h1>
+        <p>IMC: {imc:.2f}</p>
         <p>Esta ruta se esta ejecutando correctamente.</p>
         <a href="/">Volver al index</a>
       </body>
