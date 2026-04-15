@@ -1,5 +1,13 @@
 def render_page():
-    return """
+  nombre = "gabriela"
+  edad= 20
+  activo = True
+
+  altura = 1.75
+  peso = 70
+  imc = peso / (altura ** 2)
+  
+    return f"""
     <html>
       <head>
         <meta charset="utf-8" />
@@ -8,6 +16,7 @@ def render_page():
       <body style="font-family: Arial, sans-serif; margin: 40px;">
         <h1>Archivo GARAVENA.py</h1>
         <p>Esta ruta se esta ejecutando correctamente.</p>
+        <p>IMC: {imc:.2f}</p>
         <a href="/">Volver al index</a>
       </body>
     </html>
