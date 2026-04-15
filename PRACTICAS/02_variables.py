@@ -4,6 +4,10 @@
 nombre = "Ana"     # Texto (string)
 edad = 20          # Numero entero (int)
 altura = 1.65      # Numero decimal (float)
+peso = 70          # Numero entero (int)
+
+imc = peso / (altura * altura)
+print("IMC:", imc)
 
 print("Nombre:", nombre)
 print("Edad:", edad)
