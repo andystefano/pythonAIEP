@@ -3,8 +3,8 @@ def render_page():
   edad= 20
   activo = True
 
-  altura = 1.75
-  peso = 70
+  altura = 1.65
+  peso = 53
   imc = peso / (altura ** 2)
   
     return f"""
