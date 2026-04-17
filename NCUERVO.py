@@ -17,8 +17,12 @@ def render_page():
         <h1>Archivo NCUERVO.py</h1>
         <p>Nombre: {nombre}</p>
         <p>Edad: {edad}</p>
+        <p>Curso: Python AIEP</p>
         <p>Activo: {activo}</p>
         <p>IMC: {imc:.2f}</p>
       </body>
     </html>
     """
+
+print(render_page())   # 👈 AQUÍ VA (fuera de la función)
+  
