@@ -1,3 +1,18 @@
 sebastian Eduardo rain leniz
 pruebas 54 mil
 avanzando con git branch
+se comienza con git add .(para subir)
+git commit -m "nombre del archivo"
+git push
+git pull
+terminado de subir
+
+git chekout --- ir a la historia seleccionada
+git log --- revisar hisotrial de la rama
+git branch --- para crear rama 
+
+git fech --- descarga varias ramas
+
+git checkout  "rama" --- selecciona la rama
+git merge -- para unir las rama
+git dif 
