@@ -1,6 +1,6 @@
 def render_page():
     nombre = "Norbey"
-    edad = 20
+    edad = 50
     activo = True
 
     peso = 70
