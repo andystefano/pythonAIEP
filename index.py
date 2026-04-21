@@ -12,6 +12,9 @@ app = Flask(__name__)
 MODULE_NAMES = [
     "AHORMAZABAL",
     "GARAVENA",
+    "DOLAR",
+    "INDICADORES_ECONOMICOS",
+    "SELENIUM_GOOGLE",
     "JCRUZADO",
     "NCUERVO",
     "AGONZALEZ",
@@ -92,6 +95,10 @@ def home():
         "Rutas Python + Docker",
         f"""
         <h1>Archivo principal (index.py)</h1>
+        <h2>Acceso rapido</h2>
+        <ul>
+          <li><a href="/DOLAR">Ver valor del dolar</a></li>
+        </ul>
         <h2>Rutas de modulos</h2>
         <ul>{links_modulos}</ul>
         <h2>Rutas MySQL</h2>
