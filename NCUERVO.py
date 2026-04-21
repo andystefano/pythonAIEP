@@ -11,4 +11,4 @@ def render_page():
         <a href="/">Volver al index</a>
       </body>
     </html>
-    """
+    ""

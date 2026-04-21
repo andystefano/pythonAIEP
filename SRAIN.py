@@ -1,9 +1,15 @@
 def render_page():
-    return """
+    altura = 1.65      # Numero decimal (float)
+    peso = 70          # Peso en kg
+    imc = peso / (altura ** 2)  # Calcula el indice de masa corporal
+
+    return f"""
     <html>
       <head>
         <meta charset="utf-8" />
         <title>SRAIN.py</title>
+        <p>> IMC: {imc:.2f}</p>
+
       </head>
       <body style="font-family: Arial, sans-serif; margin: 70px;">
         <h1>Archivo SRAIN.py</h1>
