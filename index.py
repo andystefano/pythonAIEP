@@ -24,6 +24,7 @@ MODULE_NAMES = [
     "STAPIA",
     "CTRONCOSO",
     "RZAMORANO",
+    "NORBEY", # <-- AGREGA ESTA LÍNEA AQUÍ
 ]
 
 MYSQL_LINKS = [
