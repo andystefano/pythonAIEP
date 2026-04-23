@@ -9,4 +9,4 @@ def test_iva_con_monto_decimal():
 def test_iva_con_monto_cero():
     # El profe aquí puso == 1 para mostrar un error, 
     # pero lo correcto es 0
-    assert IVA(0) == 1
+    assert IVA(0) == 0
