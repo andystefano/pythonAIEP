@@ -1,23 +1,23 @@
-def render_page():
-  nombre = "gabriela"
-  edad= 20
-  activo = True
 
-  altura = 1.65
-  peso = 53
-  imc = peso / (altura ** 2)
-  
+altura = 1.65      # Numero decimal (float)
+peso = 53         # Numero entero (int)
+
+imc = peso / (altura * altura)
+
+
+def render_page():
     return f"""
     <html>
       <head>
         <meta charset="utf-8" />
-        <title>GARAVENA.py</title>
+        <title>JCRUZADO.py</title>
       </head>
       <body style="font-family: Arial, sans-serif; margin: 40px;">
+
         <h1>Archivo GARAVENA.py</h1>
+        <p>IMC: {imc:.2f} *****</p>
         <p>Esta ruta se esta ejecutando correctamente.</p>
-        <p>IMC: {imc:.2f}</p>
         <a href="/">Volver al index</a>
       </body>
     </html>
-    """
+    f"""
