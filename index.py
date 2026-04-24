@@ -7,7 +7,7 @@ from ejemplos.db import get_db_connection
 from ejemplos.guardar_usuario import registrar_rutas as registrar_rutas_guardar_usuario
 from webhook import registrar_rutas as registrar_rutas_webhook
 
-app = Flask(__name__)
+app = Flask(_name_)
 
 MODULE_NAMES = [
     "AHORMAZABAL",
