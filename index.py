@@ -7,7 +7,7 @@ from ejemplos.db import get_db_connection
 from ejemplos.guardar_usuario import registrar_rutas as registrar_rutas_guardar_usuario
 from webhook import registrar_rutas as registrar_rutas_webhook
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 MODULE_NAMES = [
     "AHORMAZABAL",
@@ -318,7 +318,7 @@ def build_module_route(module_name):
         module = import_module(module_name)
         return module.render_page()
 
-    route_handler._name_ = f"route_{module_name.lower()}"
+    route_handler.__name__ = f"route_{module_name.lower()}"
     return route_handler
 
 
@@ -332,6 +332,5 @@ for module_name in MODULE_NAMES:
 registrar_rutas_guardar_usuario(app)
 registrar_rutas_webhook(app)
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000)
-    
